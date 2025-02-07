@@ -81,8 +81,7 @@ class Stage(SerialDevice):
     def update_sensitivityZ(self, change):
         """Update the sensitivity based on slider value."""
         self.sensitivityZ = change['new']
-        print(f"Stage sensitivity set
-    "down": "Z-" to {self.sensitivityZ:.2f}")
+        print(f"Stage sensitivity set to {self.sensitivityZ:.2f}")
 
     def write_code(self, code, check_ok=True, debug=False):
         super().write_code(code)

@@ -16,7 +16,7 @@ Seamless integration with Raspberry Pi: Designed for embedded systems with effic
 
 Installation
 
-pip install enderscope_microscopy
+pip install board, serial, neopixels,
 
 Usage
 

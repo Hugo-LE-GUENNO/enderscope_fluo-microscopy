@@ -29,7 +29,7 @@ class Stage(SerialDevice):
         self.position = {'x': 0.0, 'y': 0.0, 'z': 0.0}
         self.sensitivityXY = 1.0  # Default sensitivity value
         self.sensitivityZ = 0.1  # Default sensitivity value
-        
+
         # Sensitivity slider
         self.sensitivityXY_slider = widgets.FloatSlider(
             value=self.sensitivityXY,

@@ -1,61 +1,77 @@
-Enderscope Microscopy
+# Enderscope Microscopy Adaptation
 
-Enderscope Microscopy is a modular Python library derived from the Enderscope project. It enables communication with the Enderscope, a DIY, budget-friendly microscope system that repurposes a 3D printer into an automated imaging tool. The system primarily runs on a Raspberry Pi, utilizing an HQ camera and Neopixel LEDs.
+## About
+This project is an adaptation of the [original EnderScope project](https://github.com/Pickering-Lab/EnderScope), specifically optimized for epifluorescence microscopy with a 10X objective. While the original EnderScope transforms an Ender 3D printer into a versatile imaging system, this adaptation focuses on biological applications and microscopy capabilities.
 
-Features
+## Original Project Credit
+This work is based on the EnderScope project developed by the Pickering Lab. The original project can be found at: https://github.com/Pickering-Lab/EnderScope
 
-Modular system: Works with various Enderscope modules like EnderPiLight, EnderPiCam, EnderStage, and more.
+## Modifications and Improvements
+This adaptation includes:
+- Specialized setup for epifluorescence microscopy
+- Optimized for 10X objective use
+- Enhanced biological sample imaging capabilities
+- Custom Python scripts for microscopy-specific functions
 
-Flexible UI with EnderPanel: Automatically generates a customizable interface based on the provided modules.
+## Required Hardware
+- Ender 3D printer (system base)
+- Raspberry Pi
+- Raspberry Pi HQ Camera
+- Neopixel UltraBirght 4W LEDs
+- 10X microscope objective
+- 3D printed parts
+- optical lens in PMMA
 
-Jupyter Notebook support: The system can run interactively within Jupyter Notebooks.
 
-Automated imaging: Easily configure and automate microscope functions using Python.
+## Installation and Setup
+1. Print the necessary 3D parts (files available in the `3D_pieces` directory)
+2. Assemble the system according to the assembly guide (coming soon...)
+3. Configure the Raspberry Pi
+4. Install the required Python dependencies
 
-Seamless integration with Raspberry Pi: Designed for embedded systems with efficient hardware communication.
 
-Installation
+## Python dependencies
+```bash
+pip install board
+pip install serial
+pip install neopixel
+```
 
-pip install board, serial, neopixels,
-
-Usage
-
-To create a modular interface using EnderPanel, simply import and initialize with the desired modules:
-
+## Usage
+```python
 from enderscope_microscopy import EnderPanel, EnderPiLight, EnderPiCam, EnderStage
 
-enderMain = EnderPanel(EnderStage(), EnderPiCam(), EnderPiLight("LED1"), EnderPiLight("LED2"))
+# Initialize components
+enderMain = EnderPanel(
+    EnderStage(),
+    [EnderPiCam(title = "myCam"),
+    EnderPiLight(title = "LED1"),
+    EnderPiLight(title ="LED2")]
+)
+
+# Launch interface
 enderMain.run()
+```
 
-This setup automatically adds tabs in the interface corresponding to each module, allowing for an adaptable and interactive microscopy experience.
+## Available Modules
+- **EnderStage**: Motorized movement control
+- **EnderPanel**: Modular user interface
+- **EnderPiLight**: LED illumination control
+- **EnderPiCam**: Camera management
 
-Components
 
-EnderPiLight: Controls Neopixel LED illumination.
+## Contributing
+Contributions are welcome! Feel free to:
+- Submit pull requests
+- Report bugs
+- Suggest improvements
+- Share your modifications
 
-EnderPiCam: Manages camera settings and image capture.
+## License
+This project is licensed under the GPL v3 License.
 
-EnderStage: Controls motorized stage movements.
 
-EnderPanel: Dynamically generates a UI based on included modules.
-
-Why Use Enderscope Microscopy?
-
-Highly customizable: Easily add or remove modules to match your imaging needs.
-
-Open-source and DIY-friendly: Perfect for makers, researchers, and educators.
-
-Integrated automation: Control imaging conditions and workflows programmatically.
-
-Contributing
-
-Contributions are welcome! Feel free to submit pull requests or open issues.
-
-License
-
-This project is licensed under the MIT License.
-
-Acknowledgments
-
-Enderscope Microscopy is inspired by Enderscope, an innovative project transforming 3D printers into advanced, flexible microscopy tools.
-
+## Acknowledgments
+- Original EnderScope project by the Pickering Lab (https://github.com/Pickering-Lab/EnderScope)
+- EnderSchool's Team (Jerôme et Erwan !)
+- Open-source community for their continuous support

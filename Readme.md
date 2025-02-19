@@ -3,6 +3,8 @@
 ## About
 This project is an adaptation of the [original EnderScope project](https://github.com/Pickering-Lab/EnderScope), specifically optimized for epifluorescence microscopy with a 10X objective. While the original EnderScope transforms an Ender 3D printer into a versatile imaging system, this adaptation focuses on biological applications and microscopy capabilities.
 
+### Logo du Projet
+![Logo]
 [adaptation_module.png]
 
 ## Original Project Credit

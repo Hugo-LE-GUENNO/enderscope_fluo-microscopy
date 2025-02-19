@@ -4,7 +4,9 @@
 This project is an adaptation of the [original EnderScope project](https://github.com/Pickering-Lab/EnderScope), specifically optimized for epifluorescence microscopy with a 10X objective. While the original EnderScope transforms an Ender 3D printer into a versatile imaging system, this adaptation focuses on biological applications and microscopy capabilities.
 
 ## Original Project Credit
-This work is based on the EnderScope project developed by the Pickering Lab. The original project can be found at: https://github.com/Pickering-Lab/EnderScope
+This work is based on the EnderScope project developed by the Pickering Lab. The original project can be found at: 
+- [Github](https://github.com/Pickering-Lab/EnderScope)
+- [Realted publication](https://doi.org/10.1098/rsta.2023.0214)
 
 ## Modifications and Improvements
 This adaptation includes:
@@ -44,26 +46,28 @@ pip install neopixel
 
 ## Usage
 ```python
-from enderscope_microscopy import EnderPanel, EnderPiLight, EnderPiCam, EnderStage
 
 # Initialize components
-enderMain = EnderPanel(
-    EnderStage(),
-    [EnderPiCam(title = "myCam"),
-    EnderPiLight(title = "LED1"),
-    EnderPiLight(title ="LED2")]
-)
+from EnderMain import Panel, Stage
+from EnderPiCam import EnderPiCam
+from EnderPiLight import EnderPiLight
+
+stage = Stage(port='/dev/ttyUSB1', baud_rate=115200)
+camera = EnderPiCam(title="HQ-CAM")
+excitation_light = EnderPiLight(title="Excitation Light", board_pin=board.D18, total_pixels=1, start_pin=0, end_pin=1)
+
+panel = Panel(stage, [camera, excitation_light])
+
 
 # Launch interface
-enderMain.run()
+panel.display()
 ```
 
 ## Available Modules
-- **EnderStage**: Motorized movement control
-- **EnderPanel**: Modular user interface
-- **EnderPiLight**: LED illumination control
+- **Stage**: Motorized movement control
+- **Panel**: Modular user interface
 - **EnderPiCam**: Camera management
-
+- **EnderPiLight**: LED illumination control
 
 ## Contributing
 Contributions are welcome! Feel free to:
@@ -79,4 +83,5 @@ This project is licensed under the GPL v3 License.
 ## Acknowledgments 👋 👋 👋 
 - Original EnderScope project by the Pickering Lab (https://github.com/Pickering-Lab/EnderScope)
 - EnderSchool's Team (Jerôme et Erwan !)
-- Open-source community for their continuous support
+- CNRS / RTmfm (Groupe de Travail "PPP")
+- Open-source community

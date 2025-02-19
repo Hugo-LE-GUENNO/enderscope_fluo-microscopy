@@ -3,6 +3,8 @@
 ## About
 This project is an adaptation of the [original EnderScope project](https://github.com/Pickering-Lab/EnderScope), specifically optimized for epifluorescence microscopy with a 10X objective. While the original EnderScope transforms an Ender 3D printer into a versatile imaging system, this adaptation focuses on biological applications and microscopy capabilities.
 
+[adaptation_module.png]
+
 ## Original Project Credit
 This work is based on the EnderScope project developed by the Pickering Lab. The original project can be found at: 
 - [Github](https://github.com/Pickering-Lab/EnderScope)
@@ -31,7 +33,7 @@ This adaptation includes:
 
 
 ## Installation and Setup
-1. Print the necessary 3D parts (files available in the `3D_pieces` directory)
+1. Print the necessary 3D parts (files available in the `3d_pieces` directory)
 2. Assemble the system according to the assembly guide (coming soon...)
 3. Configure the Raspberry Pi
 4. Install the required Python dependencies
@@ -43,6 +45,13 @@ pip install board
 pip install serial
 pip install neopixel
 ```
+
+## Available Modules
+- **Stage**: Motorized movement control
+- **Panel**: Modular user interface
+- **EnderPiCam**: Camera management
+- **EnderPiLight**: LED illumination control
+
 
 ## Usage
 ```python
@@ -58,16 +67,9 @@ excitation_light = EnderPiLight(title="Excitation Light", board_pin=board.D18, t
 
 panel = Panel(stage, [camera, excitation_light])
 
-
 # Launch interface
 panel.display()
 ```
-
-## Available Modules
-- **Stage**: Motorized movement control
-- **Panel**: Modular user interface
-- **EnderPiCam**: Camera management
-- **EnderPiLight**: LED illumination control
 
 ## Contributing
 Contributions are welcome! Feel free to:
